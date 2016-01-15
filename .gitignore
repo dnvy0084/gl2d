@@ -1,0 +1,4 @@
+# git ingnore list
+
+node_modules/
+.idea/
