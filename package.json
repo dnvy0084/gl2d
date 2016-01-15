@@ -1,0 +1,25 @@
+{
+  "name": "gl2d",
+  "version": "1.0.0",
+  "description": "gl2d library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "\"https://dnvy0084:Skarlf#20@github.com/dnvy0084/gl2d\""
+  },
+  "keywords": [
+    "webgl",
+    "2d",
+    "renderer"
+  ],
+  "author": "kim.jinhoon",
+  "license": "ISC",
+  "devDependencies": {
+    "del": "^2.2.0",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0"
+  }
+}

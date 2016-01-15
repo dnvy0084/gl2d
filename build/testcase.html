@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test case</title>
+    <script type="text/javascript" src="js/gl2d.js"></script>
+    <script type="text/javascript">
+
+        function init() {
+            console.log("init");
+
+            var p = gl2d.import( "a.b.foo.Display" );
+            gl2d.import( "a.b.c.A" );
+
+            console.dir(p);
+            console.dir(gl2d);
+        }
+
+        window.onload = init;
+
+    </script>
+    <style>
+        #canvas{
+            border: 1px solid #aaa;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <h3 class="title">test case</h3>
+    <canvas id="canvas" width="400" height="300"></canvas>
+</div>
+</body>
+</html>

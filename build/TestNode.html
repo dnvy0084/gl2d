@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test Node</title>
+    <style>
+        #canvas{
+            border: 1px solid #ccc;
+        }
+    </style>
+    <script type="text/javascript" src="js/gl2d.js"></script>
+    <script type="text/javascript">
+
+        var tex = gl2d.import( "texture" );
+        var Node = tex.Node;
+
+        console.dir( gl2d );
+
+        var context;
+        var root;
+        var n = 0.0;
+
+        function init() {
+
+            context = document.getElementById( "canvas").getContext( "2d" );
+            root = new Node( 0, 0, context.canvas.width, context.canvas.height );
+
+            console.log( "context", context, root );
+
+            initEvent();
+        }
+
+        function initEvent() {
+            var canvas = context.canvas;
+
+            canvas.addEventListener( "click", function(e){
+
+                var w = 200 * Math.random() + 50;
+                var h = 200 * Math.random() + 50;
+
+                root.add( w, h );
+
+                n += 0.05;
+
+                root.draw( context );
+            });
+        }
+
+        window.onload = init;
+
+    </script>
+</head>
+<body>
+<div class="wrapper">
+    <h3 class="title">Node Test</h3>
+    <canvas id="canvas" width="1024" height="1024"></canvas>
+</div>
+</body>
+</html>
