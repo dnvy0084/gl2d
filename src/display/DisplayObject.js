@@ -7,9 +7,12 @@
     "use strict";
 
     var display = gl2d.import("display");
+    var event = gl2d.import("event");
+    var EventDispatcher = event.EventDispatcher;
 
     var ANG = 180 / Math.PI;
     var RAD = Math.PI / 180;
+    var instanceCount = 0;
 
     function DisplayObject() {
 
@@ -20,6 +23,10 @@
         this._scaleX = 1.0;
         this._scaleY = 1.0;
         this._radian = 0.0;
+        this._parent = null;
+        this._stage = null;
+
+        this.name = "Instance" + (instanceCount++);
 
         Object.defineProperties( this, {
             "x": {
@@ -85,11 +92,24 @@
                     this.radian = value * RAD;
                 }
             },
+
+            "parent": {
+                get: function () {
+                    return this._parent;
+                }
+            },
+
+            "stage": {
+                get: function () {
+                    return this._stage;
+                }
+            },
         });
     }
 
-    DisplayObject.prototype = {
-        constructor: DisplayObject,
+    var p = gl2d.extend( DisplayObject, EventDispatcher );
+
+    p.render = function(){
 
     };
 

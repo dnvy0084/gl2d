@@ -10,11 +10,16 @@
     var DisplayObjectContainer = display.DisplayObjectContainer;
 
     function Stage() {
-
         DisplayObjectContainer.call( this );
+
+        this._stage = this;
     }
 
     var p = gl2d.extend( Stage, DisplayObjectContainer );
+
+    p.update = function ( ms ) {
+        this.render();
+    };
 
     display.Stage = Stage;
 

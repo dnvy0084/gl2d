@@ -9,8 +9,9 @@ var concat = require( "gulp-concat" );
 var paths = {
     src: [
         "src/init.js",
-        "src/geom/*.js",
-        "src/display/*.js",
+        "src/event/**/*.js",
+        "src/geom/**/*.js",
+        "src/display/**/*.js",
         "src/**/*.js"
     ]
 };

@@ -31,6 +31,12 @@
         return this._find( a, o[name] );
     };
 
+    p.assert = function( assertion, message ){
+
+        if( assertion == false )
+            throw new Error( "[Assertion ERROR]:" + message );
+    };
+
     global.gl2d = p;
 
 })( this );
