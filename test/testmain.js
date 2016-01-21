@@ -26,7 +26,7 @@
             select.appendChild( option );
         }
 
-        stage = new display.Stage();
+        stage = new display.Stage( "canvas" );
         list.BaseCase.title = document.getElementById( "title" );
 
         exec( select.selectedOptions[0].innerHTML );
@@ -45,6 +45,10 @@
         }
 
         current = new list[name]();
+        current.addEventListener( "enterframe", function(e){
+
+        });
+
         stage.addChild( current );
 
         current.start();
