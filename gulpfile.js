@@ -5,6 +5,7 @@
 var gulp = require( "gulp" );
 var del = require( "del" );
 var concat = require( "gulp-concat" );
+var print = require( "./gulp-pathprint" );
 
 var paths = {
     src: [
@@ -12,7 +13,10 @@ var paths = {
         "src/event/**/*.js",
         "src/geom/**/*.js",
         "src/display/**/*.js",
-        "src/**/*.js"
+        "src/**/*.js",
+        "test/testmain.js",
+        "test/list/BaseCase.js",
+        "test/**/*.js",
     ]
 };
 
@@ -25,6 +29,11 @@ gulp.task( "concat", function(){
         .pipe( concat( "gl2d.js" ))
         .pipe( gulp.dest("build/js") );
 });
+
+gulp.task( "print", function(){
+    return gulp.src(paths.src)
+        .pipe( print() );
+})
 
 gulp.task("watch", function(){
     gulp.watch( paths.src, [ "del", "concat"] );

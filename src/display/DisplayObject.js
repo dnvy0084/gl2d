@@ -13,8 +13,11 @@
     var ANG = 180 / Math.PI;
     var RAD = Math.PI / 180;
     var instanceCount = 0;
+    var $event = { type: "enterframe" };
 
     function DisplayObject() {
+
+        EventDispatcher.call( this );
 
         this._transformChanged = true;
 
@@ -110,7 +113,9 @@
     var p = gl2d.extend( DisplayObject, EventDispatcher );
 
     p.render = function(){
+        this.dispatchEvent( $event );
 
+        //render;
     };
 
     display.DisplayObject = DisplayObject;

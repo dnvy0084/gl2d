@@ -8,6 +8,7 @@
 
     var display = gl2d.import("display");
     var DisplayObject = display.DisplayObject;
+    var $event = { type: "enterframe" };
 
     function DisplayObjectContainer() {
         DisplayObject.call( this );
@@ -28,6 +29,8 @@
 
 
     p.render = function () {
+
+        this.dispatchEvent( $event );
 
         for (var i = 0, l = this._children.length; i < l; i++) {
 
