@@ -50,6 +50,7 @@
 
         this._stage = this;
         this.bindingUpdate = this.update.bind(this);
+        this.render = DisplayObjectContainer.prototype.render.bind(this);
         this.update();
     }
 

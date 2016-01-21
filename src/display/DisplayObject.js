@@ -114,8 +114,6 @@
 
     p.render = function(){
         this.dispatchEvent( $event );
-
-        console.log( "render", this.name, this.constructor.name );
     };
 
     display.DisplayObject = DisplayObject;

@@ -20,6 +20,11 @@
     p.start = function () {
 
         this.setTitle( "displayObject render test" );
+
+        var o = new DisplayObject();
+        o.name = "a";
+
+        this.addChild(o);
     };
 
     p.clear = function () {
