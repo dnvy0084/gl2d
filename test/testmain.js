@@ -15,7 +15,9 @@
 
     function init() {
 
-        var o = list;
+        var current = list.ImageElementTest;
+
+        var o = list, n = 0;
         var select = document.getElementById("combo");
         select.addEventListener( "change", onChange );
 
@@ -26,6 +28,9 @@
             option.innerHTML = o[s].name;
 
             select.appendChild( option );
+
+            if( o[s] == current ) select.selectedIndex = n;
+            ++n;
         }
 
         stage = new display.Stage( "canvas" );
@@ -47,12 +52,7 @@
         }
 
         current = new list[name]();
-        current.addEventListener( "enterframe", function(e){
-
-        });
-
         stage.addChild( current );
-
         current.start();
     }
     

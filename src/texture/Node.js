@@ -13,9 +13,13 @@
         this._setTo(x, y, w, h);
         this._occupied = false;
         this._parent = null;
+        this._refCount = 0;
 
         this.leftNode = null;
         this.rightNode = null;
+        this.onClear = null;
+
+        this.key = "";
 
         Object.defineProperties( this, {
 
@@ -52,6 +56,21 @@
             "occupied": {
                 get: function () {
                     return this._occupied;
+                }
+            },
+
+
+            "refCount": {
+                get: function () {
+                    return this._refCount;
+                },
+                set: function (value) {
+                    this._refCount = value;
+
+                    if( this._refCount <= 0 ) {
+                        this._refCount = 0;
+                        this._clear();
+                    }
                 }
             },
         });
@@ -118,6 +137,7 @@
 
             this._occupied = false;
 
+            if( this.onClear ) this.onClear( this );
             if( !this.leftNode ) return;
 
             if( !this.leftNode._occupied && !this.rightNode._occupied )
