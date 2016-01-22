@@ -14,11 +14,13 @@
     var RAD = Math.PI / 180;
     var instanceCount = 0;
     var $event = { type: "enterframe" };
+    var gl;
 
     function DisplayObject() {
 
         EventDispatcher.call( this );
 
+        this._vertices = new Float32Array(4);
         this._transformChanged = true;
 
         this._x = 0;
@@ -105,6 +107,18 @@
             "stage": {
                 get: function () {
                     return this._stage;
+                },
+                set: function( value ){
+                    if( value == null ) return;
+
+                    this._stage = value;
+                    gl = this._stage.gl;
+                }
+            },
+
+            "vertices": {
+                get: function () {
+                    return this._vertices;
                 }
             },
         });
@@ -114,6 +128,8 @@
 
     p.render = function(){
         this.dispatchEvent( $event );
+
+
     };
 
     display.DisplayObject = DisplayObject;

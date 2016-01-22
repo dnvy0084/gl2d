@@ -11,7 +11,7 @@
     p.extend = function ( child, parent ) {
 
         child.prototype = Object.create( parent.prototype );
-        child.constructor = child;
+        child.prototype.constructor = child;
 
         return child.prototype;
     };

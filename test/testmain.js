@@ -8,6 +8,8 @@
 
     var list = gl2d.import("test.list");
     var display = gl2d.import("display");
+    var tex = gl2d.import("texture");
+    var Texture = tex.Texture;
     var current;
     var stage;
 

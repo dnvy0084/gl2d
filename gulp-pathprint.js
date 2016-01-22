@@ -12,7 +12,12 @@ function print(){
 
     var stream = through.obj( function( file, enc, cb ){
 
-        console.log( file.history[0].replace( /\\/g, "\/" ) );
+        var path = file.history[0];
+        var match = path.match( /[^\\]+/g);
+        var index = match.indexOf( "_workspace(gl2d)") + 1;
+        var src = match.splice( index, match.length - index ).join( "/" );
+
+        console.log( '<script type="text/javascript" src="../' + src + '"></script>' );
 
         cb();
     });

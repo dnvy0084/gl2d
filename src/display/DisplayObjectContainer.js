@@ -56,7 +56,7 @@
 
         this._children.splice( index, 0, child );
         child._parent = this;
-        child._stage = this.stage;
+        child.stage = this.stage;
 
         return child;
     };
