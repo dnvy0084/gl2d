@@ -30,6 +30,7 @@
         this._radian = 0.0;
         this._parent = null;
         this._stage = null;
+        this._node = null;
 
         this.name = "Instance" + (instanceCount++);
 
@@ -119,6 +120,19 @@
             "vertices": {
                 get: function () {
                     return this._vertices;
+                }
+            },
+
+            "image": {
+                get: function () {
+                    return this._image;
+                },
+                set: function (value) {
+
+                    if( this._node )
+                        --this._node.refCount;
+
+                    this._image = value;
                 }
             },
         });

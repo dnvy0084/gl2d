@@ -20,6 +20,7 @@
         this.onClear = null;
 
         this.key = "";
+        this.map = null;
 
         Object.defineProperties( this, {
 

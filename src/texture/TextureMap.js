@@ -7,8 +7,76 @@
     "use strict";
 
     var tex = gl2d.import("texture");
+    var gl;
 
-    function Texture( w/*=2048*/, h/*=2048*/ ) {
+
+    /************************************************************
+     *
+     * @Texture Class
+     *
+     ************************************************************/
+
+    function Texture() {
+
+    }
+
+    Texture.prototype = {
+        constructor: Texture,
+
+
+    };
+
+
+
+
+    /************************************************************
+     *
+     * @TextureMap static methods
+     *
+     ************************************************************/
+
+    var textures = [];
+
+    TextureMap.init = function (webglRenderingContext) {
+        gl = webglRenderingContext;
+    };
+
+    TextureMap.add = function( key, img ){
+
+        var node;
+
+        for (var i = 0; !node; i++) {
+
+            textures[i] = textures[i] || new TextureMap();
+
+            node = textures[i].add( key, img );
+            node.map = textures[i];
+        }
+
+        return node;
+    };
+
+    TextureMap.getMapArray = function(){
+        return textures;
+    };
+
+    TextureMap.getMapAt = function (index) {
+        return textures[i];
+    };
+
+    TextureMap.getNumMaps = function () {
+        return textures.length;
+    };
+
+
+
+    /************************************************************
+     *
+     * @TextureMap Class
+     *
+     ************************************************************/
+
+    function TextureMap( w/*=2048*/, h/*=2048*/ ) {
 
         w = w || 2048;
         h = h || 2048;
@@ -57,8 +125,8 @@
         });
     }
 
-    Texture.prototype = {
-        constructor: Texture,
+    TextureMap.prototype = {
+        constructor: TextureMap,
 
         add: function ( key, img ) {
 
@@ -98,6 +166,7 @@
     };
 
     tex.Texture = Texture;
+    tex.TextureMap = TextureMap;
 
 })();
 

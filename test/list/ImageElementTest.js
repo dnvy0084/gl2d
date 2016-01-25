@@ -10,7 +10,7 @@
     var asset = gl2d.import("asset");
     var ImageAsset = asset.ImageAsset;
     var tex = gl2d.import("texture");
-    var Texture = tex.Texture;
+    var TextureMap = tex.TextureMap;
     var context;
 
     function ImageElementTest() {
@@ -23,8 +23,8 @@
 
         this.setTitle( 'Image element test' );
 
-        var a = [];
-        var tex = new Texture();
+        var a = [], node;
+        TextureMap.init( this.stage.gl );
 
         for (var i = 1; i <= 13; i++) {
             if( i == 9 ) continue;
@@ -37,13 +37,12 @@
 
                 if( assets[i].img.width == 0 || assets[i].img.height == 0 ) continue;
 
-                tex.add( assets[i].src, assets[i].img );
+                node = TextureMap.add(i.toString(), assets[i].img);
             }
 
-            document.body.appendChild(tex.canvas);
+            document.body.appendChild(node.map.canvas);
 
             var gl = this.stage.gl;
-
             var texture = gl.createTexture();
 
             gl.bindTexture( gl.TEXTURE_2D, texture );
@@ -57,7 +56,7 @@
                 gl.RGBA,
                 gl.RGBA,
                 gl.UNSIGNED_BYTE,
-                tex.canvas
+                node.map.canvas
             );
 
         }.bind(this));
